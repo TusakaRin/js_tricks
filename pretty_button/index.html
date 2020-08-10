@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涟漪效果按钮</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <a href="#">涟漪效果按钮</a>
+    <a href="#">涟漪效果按钮</a>
+</body>
+<script>
+    const btns = document.querySelectorAll("a");
+    btns.forEach(btn=>{
+        btn.addEventListener('click', function(e){
+            // console.log(e.clientX, e.clientY);
+            // console.log(e.target.offsetLeft, e.target.offsetTop);
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
+            // console.log(x, y);
+            let span = document.createElement('span');
+            span.style.left = x + 'px';
+            span.style.top = y + 'px';
+            this.appendChild(span);  // This 指向当前的a标签
+            setTimeout(()=> {
+                span.remove();
+            }, 1000)
+        })
+    })
+</script>
+</html>
